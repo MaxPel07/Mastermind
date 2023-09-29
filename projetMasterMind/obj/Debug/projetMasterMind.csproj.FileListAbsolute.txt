@@ -6,3 +6,7 @@ D:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMas
 D:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.pdb
 D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.exe
 D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.pdb
+E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.AssemblyReference.cache
+E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.CoreCompileInputs.cache
+E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.exe
+E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.pdb
