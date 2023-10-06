@@ -24,7 +24,6 @@ namespace projetMasterMind
                 //Création des valeurs pour stocker les variables
                 char[] goal = new char[4];
                 string tryUser;
-                //string rightCombination = "GGGG";
 
                 //Message de Bienvenue sur la console, avec les explications du jeux.
                 Console.WriteLine("Bienvenue sur Mastermind !");
@@ -39,6 +38,9 @@ namespace projetMasterMind
 
                 switch (color1)
                 {
+                    case 0:
+                        goal[0] = 'C';
+                        break;
                     case 1:
                         goal[0] = 'R';
                         break;
@@ -63,13 +65,14 @@ namespace projetMasterMind
                         goal[0] = 'W';
                         break;
 
-                    case 7:
-                        goal[0] = 'C';
-                        break;
                 }
 
                 switch (color2)
                 {
+                    case 0:
+                        goal[1] = 'C';
+                        break;
+
                     case 1:
                         goal[1] = 'R';
                         break;
@@ -93,14 +96,14 @@ namespace projetMasterMind
                     case 6:
                         goal[1] = 'W';
                         break;
-
-                    case 7:
-                        goal[1] = 'C';
-                        break;
                 }
 
                 switch (color3)
                 {
+                    case 0:
+                        goal[2] = 'C';
+                        break;
+
                     case 1:
                         goal[2] = 'R';
                         break;
@@ -124,14 +127,14 @@ namespace projetMasterMind
                     case 6:
                         goal[2] = 'W';
                         break;
-
-                    case 7:
-                        goal[2] = 'C';
-                        break;
                 }
 
                 switch (color4)
                 {
+                    case 0:
+                        goal[3] = 'C';
+                        break;
+
                     case 1:
                         goal[3] = 'R';
                         break;
@@ -155,12 +158,11 @@ namespace projetMasterMind
                     case 6:
                         goal[3] = 'W';
                         break;
-
-                    case 7:
-                        goal[3] = 'C';
-                        break;
                 }
 
+                 string code = ""+goal[0]+goal[1]+goal[2]+ goal[3];
+
+                Console.WriteLine(code);
                 //10 essaie possible avec comme réponse système "mauvaise réponse" ou "Bravo..." pour le moment
                 //goal.char
                 for (int nbEssaie = 1; nbEssaie < 11; nbEssaie++)
@@ -184,38 +186,43 @@ namespace projetMasterMind
                     */
                     int ok = 0;
                     
-                        if (tryUser == goal.ToString())
+                        if (tryUser == code)
                         {
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             Console.WriteLine("Bravo ! Vous avez trouvé la bonne combinaison");
-                            break; //sort de la boucle si la combinaison est correcte
+                            Console.ResetColor();
+                        break; //sort de la boucle si la combinaison est correcte
                         }
                         else 
                         {
-                            if (tryUser[0] == goal[0])
+                            if (tryUser[0] == code[0])
                             {
                                 ok = ok + 1;
                             }
-                            if (tryUser[1] == goal[1])
+                            if (tryUser[1] == code[1])
                             {
                                 ok = ok + 1;
                             }
-                            if (tryUser[2] == goal[2])
+                            if (tryUser[2] == code[2])
                             {
                                 ok = ok + 1;
                             }
-                            if (tryUser[3] == goal[3])
+                            if (tryUser[3] == code[3])
                             {
                                 ok = ok + 1;
                             }
-                            Console.WriteLine("Bravo ! Vous avez trouvé"+ok+" bonnes couleurs la bonne combinaison");
-                            break; //sort de la boucle si la combinaison est correcte
-                        }
-                    /*
-                    else if (tryUser != goal.ToString())
-                    {
-                        Console.WriteLine("mauvaise réponse");
-                    }*/
 
+                            Console.WriteLine("=> "+ok+" couleurs bien placée(s)");
+                            
+                        }
+                    
+                        if (tryUser != code.ToString())
+                        {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("mauvaise réponse");
+                        Console.ResetColor();
+                        Console.WriteLine();
+                    }
                 }
 
                 Console.WriteLine("Voulez-vous rejouer ? (Oui/Non)");
