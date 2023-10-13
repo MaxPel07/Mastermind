@@ -13,224 +13,121 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace projetMasterMind
-{   
+{
     internal class Program
     {
-        /// <param name="args"></param>
         static void Main(string[] args)
         {
+            Console.WindowWidth = 50;
+            Console.WindowHeight = 30;
+            Console.BufferWidth = 50;
+            Console.BufferHeight = 9001;
+
             do
             {
-                //Création des valeurs pour stocker les variables
                 char[] goal = new char[4];
                 string tryUser;
 
-                //Message de Bienvenue sur la console, avec les explications du jeux.
+                Console.Clear();
                 Console.WriteLine("Bienvenue sur Mastermind !");
-                Console.WriteLine("Couleur possible : GYWRMC");
-                Console.WriteLine("Devine le code en 4 couleur.\n");
+                Console.WriteLine("Couleurs possibles : GYWRMCB");
+                Console.WriteLine("Devinez le code en 4 couleurs.\n");
 
                 Random random = new Random();
-                int color1 = random.Next(6);
-                int color2 = random.Next(6);
-                int color3 = random.Next(6);
-                int color4 = random.Next(6);
 
-                switch (color1)
+                // Génération d'une combinaison aléatoire de 4 couleurs
+                for (int i = 0; i < 4; i++)
                 {
-                    case 0:
-                        goal[0] = 'C';
-                        break;
-                    case 1:
-                        goal[0] = 'R';
-                        break;
-                    
-                    case 2:
-                        goal[0] = 'G';
-                        break;
+                    int colorValue = random.Next(6);
+                    char color;
 
-                    case 3:
-                        goal[0] = 'B';
-                        break;
+                    // Conversion de la valeur aléatoire en caractère de couleur
+                    switch (colorValue)
+                    {
+                        case 0:
+                            color = 'C';
+                            break;
+                        case 1:
+                            color = 'R';
+                            break;
+                        case 2:
+                            color = 'G';
+                            break;
+                        case 3:
+                            color = 'B';
+                            break;
+                        case 4:
+                            color = 'Y';
+                            break;
+                        case 5:
+                            color = 'M';
+                            break;
+                        default:
+                            color = 'W';
+                            break;
+                    }
 
-                    case 4:
-                        goal[0] = 'Y';
-                        break;
-
-                    case 5:
-                        goal[0] = 'M';
-                        break;
-
-                    case 6:
-                        goal[0] = 'W';
-                        break;
-
+                    goal[i] = color;
                 }
 
-                switch (color2)
-                {
-                    case 0:
-                        goal[1] = 'C';
-                        break;
+                string code = new string(goal);
 
-                    case 1:
-                        goal[1] = 'R';
-                        break;
-
-                    case 2:
-                        goal[1] = 'G';
-                        break;
-
-                    case 3:
-                        goal[1] = 'B';
-                        break;
-
-                    case 4:
-                        goal[1] = 'Y';
-                        break;
-
-                    case 5:
-                        goal[1] = 'M';
-                        break;
-
-                    case 6:
-                        goal[1] = 'W';
-                        break;
-                }
-
-                switch (color3)
-                {
-                    case 0:
-                        goal[2] = 'C';
-                        break;
-
-                    case 1:
-                        goal[2] = 'R';
-                        break;
-
-                    case 2:
-                        goal[2] = 'G';
-                        break;
-
-                    case 3:
-                        goal[2] = 'B';
-                        break;
-
-                    case 4:
-                        goal[2] = 'Y';
-                        break;
-
-                    case 5:
-                        goal[2] = 'M';
-                        break;
-
-                    case 6:
-                        goal[2] = 'W';
-                        break;
-                }
-
-                switch (color4)
-                {
-                    case 0:
-                        goal[3] = 'C';
-                        break;
-
-                    case 1:
-                        goal[3] = 'R';
-                        break;
-
-                    case 2:
-                        goal[3] = 'G';
-                        break;
-
-                    case 3:
-                        goal[3] = 'B';
-                        break;
-
-                    case 4:
-                        goal[3] = 'Y';
-                        break;
-
-                    case 5:
-                        goal[3] = 'M';
-                        break;
-
-                    case 6:
-                        goal[3] = 'W';
-                        break;
-                }
-
-                 string code = ""+goal[0]+goal[1]+goal[2]+ goal[3];
-
+                // Affiche la bonne combinaison pour le moment, pour effectuer des tests
+                Console.WriteLine("Bonne combinaison pour la verion test => " + code);
                 Console.WriteLine(code);
-                //10 essaie possible avec comme réponse système "mauvaise réponse" ou "Bravo..." pour le moment
-                //goal.char
-                for (int nbEssaie = 1; nbEssaie < 11; nbEssaie++)
+
+                for (int nbTries = 1; nbTries <= 10; nbTries++)
                 {
-                    Console.WriteLine("Essaie" + nbEssaie);
+                    Console.WriteLine("Essai " + nbTries);
                     tryUser = Console.ReadLine();
 
-                    /*
                     int ok = 0;
-                    for (int i = 0; i < goal.Length; i++)
+                    int badPosition = 0;
+
+                    List<char> correctButMisplaced = new List<char>();
+
+                    // Comparaison entre la proposition de l'utilisateur et la combinaison secrète
+                    if (tryUser == code)
                     {
-                        char goalChar = goal[i];
-                        char tryUserChar = tryUser[i];
-
-                        if((tryUser[i] == goal[i]))
-                         
-                        {
-                            ok++;
-                        }
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Bravo ! Vous avez trouvé la bonne combinaison");
+                        Console.ResetColor();
+                        break;
                     }
-                    */
-                    int ok = 0;
-                    
-                        if (tryUser == code)
+                    else
+                    {
+                        for (int i = 0; i < code.Length; i++)
                         {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("Bravo ! Vous avez trouvé la bonne combinaison");
-                            Console.ResetColor();
-                        break; //sort de la boucle si la combinaison est correcte
+                            if (tryUser[i] == code[i])
+                            {
+                                ok++;
+                            }
+                            else if (code.Contains(tryUser[i]) && !correctButMisplaced.Contains(tryUser[i]))
+                            {
+                                correctButMisplaced.Add(tryUser[i]);
+                                badPosition++;
+                            }
                         }
-                        else 
-                        {
-                            if (tryUser[0] == code[0])
-                            {
-                                ok = ok + 1;
-                            }
-                            if (tryUser[1] == code[1])
-                            {
-                                ok = ok + 1;
-                            }
-                            if (tryUser[2] == code[2])
-                            {
-                                ok = ok + 1;
-                            }
-                            if (tryUser[3] == code[3])
-                            {
-                                ok = ok + 1;
-                            }
+                        // Affichage du résultat de l'essai
+                        Console.WriteLine("=> " + ok + " couleur(s) bien placée(s)");
+                        Console.WriteLine("=> " + badPosition + " couleur(s) correcte(s) mais mal placée(s)");
+                    }
 
-                            Console.WriteLine("=> "+ok+" couleurs bien placée(s)");
-                            
-                        }
-                    
-                        if (tryUser != code.ToString())
-                        {
+                    if (tryUser != code)
+                    {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("mauvaise réponse");
+                        Console.WriteLine("Mauvaise réponse");
                         Console.ResetColor();
                         Console.WriteLine();
                     }
                 }
 
                 Console.WriteLine("Voulez-vous rejouer ? (Oui/Non)");
+                Console.WriteLine();
             } while (Console.ReadLine().Equals("Oui", StringComparison.OrdinalIgnoreCase));
 
-            Console.WriteLine("Appuyez sur une touche pour quitter le jeu");
+            Console.WriteLine("Appuyez sur la touche ENTER pour quitter le jeu");
             Console.ReadLine();
-
         }
     }
 }

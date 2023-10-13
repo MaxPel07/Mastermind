@@ -1,5 +1,4 @@
 D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.AssemblyReference.cache
-D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.SuggestedBindingRedirects.cache
 D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.CoreCompileInputs.cache
 D:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.exe.config
 D:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.exe
@@ -10,3 +9,4 @@ E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMas
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.CoreCompileInputs.cache
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.exe
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.pdb
+D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.SuggestedBindingRedirects.cache
