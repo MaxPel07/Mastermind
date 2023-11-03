@@ -72,9 +72,6 @@ namespace projetMasterMind
 
                 string code = new string(goal);
 
-                // Affiche la bonne combinaison pour le moment, pour effectuer des tests
-                Console.WriteLine("Bonne combinaison pour la verion test => " + code);
-                Console.WriteLine(code);
 
                 for (int nbTries = 1; nbTries <= 10; nbTries++)
                 {
@@ -84,7 +81,8 @@ namespace projetMasterMind
                     int ok = 0;
                     int badPosition = 0;
 
-                    List<char> correctButMisplaced = new List<char>();
+                    // Tableau pour suivre les indices déjà utilisés dans la combinaison secrète
+                    bool[] usedIndices = new bool[4];
 
                     // Comparaison entre la proposition de l'utilisateur et la combinaison secrète
                     if (tryUser == code)
@@ -101,13 +99,18 @@ namespace projetMasterMind
                             if (tryUser[i] == code[i])
                             {
                                 ok++;
+                                usedIndices[i] = true;
                             }
-                            else if (code.Contains(tryUser[i]) && !correctButMisplaced.Contains(tryUser[i]))
+                        }
+
+                        for (int i = 0; i < code.Length; i++)
+                        {
+                            if (!usedIndices[i] && code.Contains(tryUser[i]))
                             {
-                                correctButMisplaced.Add(tryUser[i]);
                                 badPosition++;
                             }
                         }
+
                         // Affichage du résultat de l'essai
                         Console.WriteLine("=> " + ok + " couleur(s) bien placée(s)");
                         Console.WriteLine("=> " + badPosition + " couleur(s) correcte(s) mais mal placée(s)");

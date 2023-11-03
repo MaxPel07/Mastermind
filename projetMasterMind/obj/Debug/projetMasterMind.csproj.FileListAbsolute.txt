@@ -9,4 +9,7 @@ E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMas
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.CoreCompileInputs.cache
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.exe
 E:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.pdb
+E:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.exe.config
+E:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.exe
+E:\programation\masterMind\projetMasterMind\projetMasterMind\bin\Debug\projetMasterMind.pdb
 D:\programation\masterMind\projetMasterMind\projetMasterMind\obj\Debug\projetMasterMind.csproj.SuggestedBindingRedirects.cache
